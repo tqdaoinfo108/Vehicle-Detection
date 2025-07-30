@@ -109,7 +109,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
     if pretrained:
         with torch_distributed_zero_first(RANK):
             weights = attempt_download(weights)  # download if not found locally
-        ckpt = torch.load(weights, map_location=device)  # load checkpoint
+        ckpt = torch.load(weights, map_location=device, weights_only=False)
         model = Model(cfg or ckpt['model'].yaml, ch=3, nc=nc, anchors=hyp.get('anchors')).to(device)  # create
         exclude = ['anchor'] if (cfg or hyp.get('anchors')) and not resume else []  # exclude keys
         csd = ckpt['model'].float().state_dict()  # checkpoint state_dict as FP32
@@ -307,7 +307,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
                     imgs = nn.functional.interpolate(imgs, size=ns, mode='bilinear', align_corners=False)
 
             # Forward
-            with amp.autocast(enabled=cuda):
+            with torch.amp.autocast(device_type='cuda' if cuda else 'cpu', enabled=cuda):
                 pred = model(imgs)  # forward
                 loss, loss_items = compute_loss(pred, targets.to(device))  # loss scaled by batch_size
                 if RANK != -1:
@@ -400,7 +400,10 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
         # end epoch ----------------------------------------------------------------------------------------------------
     # end training -----------------------------------------------------------------------------------------------------
     if RANK in [-1, 0]:
-        LOGGER.info(f'\n{epoch - start_epoch + 1} epochs completed in {(time.time() - t0) / 3600:.3f} hours.')
+        if 'epoch' in locals():
+            LOGGER.info(f'\n{epoch - start_epoch + 1} epochs completed in {(time.time() - t0) / 3600:.3f} hours.')
+        else:
+            LOGGER.info(f'\nTraining stopped early. Total time: {(time.time() - t0) / 3600:.3f} hours.')
         if not evolve:
             if is_coco:  # COCO dataset
                 for m in [last, best] if best.exists() else [last]:  # speed, mAP tests
@@ -418,7 +421,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
             for f in last, best:
                 if f.exists():
                     strip_optimizer(f)  # strip optimizers
-        callbacks.on_train_end(last, best, plots, epoch)
+        callbacks.on_train_end(last, best, plots, epoch if 'epoch' in locals() else 0)
         LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}")
 
     torch.cuda.empty_cache()

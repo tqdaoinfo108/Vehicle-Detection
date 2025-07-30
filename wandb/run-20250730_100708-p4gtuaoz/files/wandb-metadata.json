@@ -1,0 +1,31 @@
+{
+  "os": "Windows-10-10.0.26100-SP0",
+  "python": "CPython 3.11.8",
+  "startedAt": "2025-07-30T03:07:08.931791Z",
+  "args": [
+    "--resume"
+  ],
+  "program": "C:\\Users\\daotq\\Documents\\Source_daotq\\Git\\Vehicle-Detection\\train.py",
+  "codePath": "train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "https://github.com/tqdaoinfo108/Vehicle-Detection.git",
+    "commit": "fc9278a56cbe880a2c698eb5d1e72e6251e47e45"
+  },
+  "email": "qdao.cntt@gmail.com",
+  "root": "C:\\Users\\daotq\\Documents\\Source_daotq\\Git\\Vehicle-Detection",
+  "host": "DESKTOP-TNF68JI",
+  "executable": "C:\\Users\\daotq\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "511304527872",
+      "used": "302039535616"
+    }
+  },
+  "memory": {
+    "total": "42718257152"
+  },
+  "writerId": "pyxqpkm6znlyn5b2i79h08xn11hl0vjj"
+}

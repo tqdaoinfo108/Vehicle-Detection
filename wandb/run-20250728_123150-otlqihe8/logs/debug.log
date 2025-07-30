@@ -1,0 +1,23 @@
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_setup.py:_flush():80] Current SDK version is 0.21.0
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_setup.py:_flush():80] Configure stats pid to 17772
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_setup.py:_flush():80] Loading settings from C:\Users\daotq\.config\wandb\settings
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_setup.py:_flush():80] Loading settings from C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\wandb\settings
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-07-28 12:31:50,828 INFO    MainThread:17772 [wandb_init.py:setup_run_log_directory():703] Logging user logs to C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\wandb\run-20250728_123150-otlqihe8\logs\debug.log
+2025-07-28 12:31:50,833 INFO    MainThread:17772 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\wandb\run-20250728_123150-otlqihe8\logs\debug-internal.log
+2025-07-28 12:31:50,833 INFO    MainThread:17772 [wandb_init.py:init():830] calling init triggers
+2025-07-28 12:31:50,833 INFO    MainThread:17772 [wandb_init.py:init():835] wandb.init called with sweep_config: {}
+config: {'weights': 'yolov5m.pt', 'cfg': '', 'data': 'dataset.yaml', 'hyp': {'lr0': 0.01, 'lrf': 0.2, 'momentum': 0.937, 'weight_decay': 0.0005, 'warmup_epochs': 3.0, 'warmup_momentum': 0.8, 'warmup_bias_lr': 0.1, 'box': 0.05, 'cls': 0.5, 'cls_pw': 1.0, 'obj': 1.0, 'obj_pw': 1.0, 'iou_t': 0.2, 'anchor_t': 4.0, 'fl_gamma': 0.0, 'hsv_h': 0.015, 'hsv_s': 0.7, 'hsv_v': 0.4, 'degrees': 0.0, 'translate': 0.1, 'scale': 0.5, 'shear': 0.0, 'perspective': 0.0, 'flipud': 0.0, 'fliplr': 0.5, 'mosaic': 1.0, 'mixup': 0.0, 'copy_paste': 0.0}, 'epochs': 50, 'batch_size': 16, 'imgsz': 640, 'rect': False, 'resume': False, 'nosave': False, 'noval': False, 'noautoanchor': False, 'evolve': None, 'bucket': '', 'cache': None, 'image_weights': False, 'device': '', 'multi_scale': False, 'single_cls': False, 'adam': False, 'sync_bn': False, 'workers': 8, 'project': 'runs/train', 'entity': None, 'name': 'exp', 'exist_ok': False, 'quad': False, 'linear_lr': False, 'label_smoothing': 0.0, 'upload_dataset': False, 'bbox_interval': -1, 'save_period': -1, 'artifact_alias': 'latest', 'local_rank': -1, 'freeze': 0, 'patience': 30, 'save_dir': 'runs\\train\\exp', '_wandb': {}}
+2025-07-28 12:31:50,833 INFO    MainThread:17772 [wandb_init.py:init():871] starting backend
+2025-07-28 12:31:51,053 INFO    MainThread:17772 [wandb_init.py:init():874] sending inform_init request
+2025-07-28 12:31:51,068 INFO    MainThread:17772 [wandb_init.py:init():882] backend started and connected
+2025-07-28 12:31:51,070 INFO    MainThread:17772 [wandb_init.py:init():953] updated telemetry
+2025-07-28 12:31:51,108 INFO    MainThread:17772 [wandb_init.py:init():977] communicating run to backend with 90.0 second timeout
+2025-07-28 12:32:03,349 INFO    MainThread:17772 [wandb_init.py:init():1029] starting run threads in backend
+2025-07-28 12:32:03,455 INFO    MainThread:17772 [wandb_run.py:_console_start():2458] atexit reg
+2025-07-28 12:32:03,455 INFO    MainThread:17772 [wandb_run.py:_redirect():2306] redirect: wrap_raw
+2025-07-28 12:32:03,455 INFO    MainThread:17772 [wandb_run.py:_redirect():2375] Wrapping output streams.
+2025-07-28 12:32:03,455 INFO    MainThread:17772 [wandb_run.py:_redirect():2398] Redirects installed.
+2025-07-28 12:32:03,458 INFO    MainThread:17772 [wandb_init.py:init():1075] run started, returning control to user process
+2025-07-28 12:32:03,461 INFO    MainThread:17772 [wandb_run.py:_config_callback():1363] config_cb None None {'data_dict': {'path': 'Dataset/dataset-vehicles', 'train': 'Dataset\\dataset-vehicles\\images\\train', 'val': 'Dataset\\dataset-vehicles\\images\\val', 'test': None, 'nc': 5, 'names': ['Car', 'Motorcycle', 'Truck', 'Bus', 'Bicycle']}}
+2025-07-28 12:32:08,810 INFO    MsgRouterThr:17772 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

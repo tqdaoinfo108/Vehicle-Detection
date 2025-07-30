@@ -1,0 +1,63 @@
+
+                 from  n    params  module                                  arguments
+  0                -1  1      5280  models.common.Conv                      [3, 48, 6, 2, 2]
+  1                -1  1     41664  models.common.Conv                      [48, 96, 3, 2]
+  2                -1  2     65280  models.common.C3                        [96, 96, 2]
+  3                -1  1    166272  models.common.Conv                      [96, 192, 3, 2]
+  4                -1  4    444672  models.common.C3                        [192, 192, 4]
+  5                -1  1    664320  models.common.Conv                      [192, 384, 3, 2]
+  6                -1  6   2512896  models.common.C3                        [384, 384, 6]
+  7                -1  1   2655744  models.common.Conv                      [384, 768, 3, 2]
+  8                -1  2   4134912  models.common.C3                        [768, 768, 2]
+  9                -1  1   1476864  models.common.SPPF                      [768, 768, 5]
+ 10                -1  1    295680  models.common.Conv                      [768, 384, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  2   1182720  models.common.C3                        [768, 384, 2, False]
+ 14                -1  1     74112  models.common.Conv                      [384, 192, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  2    296448  models.common.C3                        [384, 192, 2, False]
+ 18                -1  1    332160  models.common.Conv                      [192, 192, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  2   1035264  models.common.C3                        [384, 384, 2, False]
+ 21                -1  1   1327872  models.common.Conv                      [384, 384, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  2   4134912  models.common.C3                        [768, 768, 2, False]
+ 24      [17, 20, 23]  1     40410  models.yolo.Detect                      [5, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [192, 384, 768]]
+C:\Users\daotq\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\TensorShape.cpp:4316.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 369 layers, 20887482 parameters, 20887482 gradients, 48.3 GFLOPs
+
+Transferred 482/482 items from runs\train\exp17\weights\last.pt
+Scaled weight_decay = 0.0005
+[34m[1moptimizer:[0m SGD with parameter groups 79 weight, 82 weight (no decay), 82 bias
+C:\Users\daotq\AppData\Local\Programs\Python\Python311\Lib\site-packages\albumentations\core\composition.py:331: UserWarning: Got processor for bboxes, but no transform to process it.
+  self._set_keys()
+[34m[1malbumentations: [0mBlur(p=0.1, blur_limit=(3, 7)), MedianBlur(p=0.1, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3)
+[34m[1mtrain: [0mScanning 'Dataset\dataset-vehicles\labels\train' images and labels...1142 found, 54 missing, 0 empty, 1 corrupted: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1196/1196 [00:17<00:00, 67.05it/s][0m
+[34m[1mtrain: [0mWARNING: Ignoring corrupted image and/or label Dataset\dataset-vehicles\images\train\178.jpg: negative labels
+[34m[1mtrain: [0mWARNING: Cache directory Dataset\dataset-vehicles\labels is not writeable: [WinError 183] Cannot create a file when that file already exists: 'Dataset\\dataset-vehicles\\labels\\train.cache.npy' -> 'Dataset\\dataset-vehicles\\labels\\train.cache'
+C:\Users\daotq\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\data\dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+[34m[1mval: [0mScanning 'Dataset\dataset-vehicles\labels\val' images and labels...117 found, 0 missing, 0 empty, 0 corrupted: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 117/117 [00:20<00:00,  5.77it/s][0m
+[34m[1mval: [0mWARNING: Cache directory Dataset\dataset-vehicles\labels is not writeable: [WinError 183] Cannot create a file when that file already exists: 'Dataset\\dataset-vehicles\\labels\\val.cache.npy' -> 'Dataset\\dataset-vehicles\\labels\\val.cache'
+C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\train.py:258: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = amp.GradScaler(enabled=cuda)
+Image sizes 640 train, 640 val
+Using 8 dataloader workers
+Logging results to [1mruns\train\exp17[0m
+Starting training for 50 epochs...
+
+Training stopped early. Total time: 0.000 hours.
+Optimizer stripped from runs\train\exp17\weights\last.pt, 42.1MB
+Optimizer stripped from runs\train\exp17\weights\best.pt, 42.1MB
+Traceback (most recent call last):
+  File "C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\train.py", line 614, in <module>
+    main(opt)
+  File "C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\train.py", line 512, in main
+    train(opt.hyp, opt, device)
+  File "C:\Users\daotq\Documents\Source_daotq\Git\Vehicle-Detection\train.py", line 424, in train
+    callbacks.on_train_end(last, best, plots, epoch)
+                                       ^^^^^
+UnboundLocalError: cannot access local variable 'epoch' where it is not associated with a value
